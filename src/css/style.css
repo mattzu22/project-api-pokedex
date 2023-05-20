@@ -8,11 +8,42 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.header .search {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  max-width: 400px;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.header .search input {
+  width: 80%;
+  padding: 4px 6px;
+  border: none;
+  outline: none;
+}
+
+.header .search button {
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 10%);
+  border-left: 1px solid black;
+  width: 40px;
+  height: 40px;
 }
 
 .header img {
-  max-width: 450px;
+  max-width: 250px;
 }
 
 .cards-pokemons {
@@ -28,73 +59,112 @@ body {
 
 .cartao-pokemon {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   width: 250px;
 }
 
-.cartao-pokemon .cartao-topo {
-  padding: 30px 40px 0;
-}
-
 .cartao-pokemon .nome {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  margin-top: 0;
 }
 
 .cartao-pokemon .tipo {
   font-size: 13px;
-  background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  opacity: 0.7;
-  border-radius: 12px;
-  padding: 3px 7px;
+  border-radius: 6px;
+  padding: 3px 15px;
+  color: white;
 }
 
 .cartao-pokemon .detalhes {
-  color: #ffffff;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
+  max-width: 85%;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 15px 8px;
+  background-color: rgba(255, 255, 255, 0.787);
+  color: black;
 }
 
 .cartao-pokemon .cartao-imagem {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
-.cartao-pokemon img {
+.cartao-pokemon .cartao-imagem img {
   max-width: 100%;
 }
 
 .tipo-fogo {
-  background-color: #d23434d2;
+  background-color: #d23434ec;
 }
 
-.tipo-eletrico {
-  background-color: #aa27c4d8;
+.tipo-venenoso {
+  background-color: #9c05baf2;
 }
 
 .tipo-agua-dragao {
-  background-color: #75eefed6;
+  background-color: #75eefef0;
 }
 
 .tipo-planta {
-  background-color: #64e296d2;
-}
-
-.tipo-planta-veneno {
-    background: linear-gradient(90deg, rgba(100,226,150,1) 22%, rgba(171,26,226,1) 100%);
+  background-color: #64e296f0;
 }
 
 .tipo-fantasma {
-  background-color: #a34bb2d0;
+  background-color: #a34bb2f0;
 }
 
 .tipo-voador {
-  background-color: #bb8e07d3;
+  background-color: #bb8e07f4;
 }
 
 .tipo-inseto {
-    background-color: #f4e131d3;
-  }
+  background-color: #f4e131f4;
+}
+
+.tipo-planta-veneno {
+  background: linear-gradient(
+    90deg,
+    rgba(100, 226, 150, 1) 35%,
+    rgba(171, 26, 226, 1) 100%
+  );
+}
+
+.tipo-voador-fire {
+  background: linear-gradient(
+    90deg,
+    rgba(210, 52, 52, 1) 35%,
+    rgba(187, 142, 7, 1) 100%
+  );
+}
+
+.tipo-inseto-veneno {
+  background: linear-gradient(
+    90deg,
+    rgba(106, 52, 210, 1) 35%,
+    rgba(187, 142, 7, 1) 100%
+  );
+}
+
+.tipo-inseto-voador {
+  background: linear-gradient(
+    90deg,
+    rgba(106, 52, 210, 1) 35%,
+    rgba(187, 142, 7, 1) 100%
+  );
+}
+
+.tipo-normal-voador {
+  background: linear-gradient(
+    90deg,
+    rgba(215, 59, 230, 1) 35%,
+    rgba(218, 167, 12, 1) 83%
+  );
+}

@@ -1,76 +1,93 @@
-
 let detailsPokemon = [];
-
 const cardsPokemons = document.querySelector(".cards-pokemons");
 
 const fetchPokemons = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=20";
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=10";
   const response = await fetch(url);
   return await response.json();
 };
 
 async function pokeDetails(poke) {
-  const url = await fetchPokemons();
-  const pokemons = await url.results;
+  const { results} = await fetchPokemons();
+  const pokemons = results;
 
 
-  pokemons.map(async (poke) => {
-    const url = poke.url;
-    const response = await fetch(url);
+  await Promise.all(
+    pokemons.map(async (pokemonData) => {
+      const url = pokemonData.url;
+      const response = await fetch(url);
+      const pokemon = await response.json();
 
-    const pokemon = await response.json();
-    detailsPokemon.push({
-      name: pokemon.name,
-      image: pokemon.sprites.front_default,
-      id: pokemon.id,
-      types: pokemon.types.map((type) =>{
-           return type.type.name
-      })
-    });
-   
+      const types = pokemon.types.map((type) => type.type.name);
 
-    cardsPokemons.innerHTML = "";
+      detailsPokemon.push({
+        name: pokemon.name,
+        image: pokemon.sprites.front_default,
+        id: pokemon.id,
+        types: types,
+      });
+    })
+  );
 
     detailsPokemon.map((poke) => {
-      showColor();
+      showColorPokemon();
 
       cardsPokemons.innerHTML += `
-        <div class="cartao-pokemon ${poke.types}">
-        <div class="cartao-topo">
+        <div class="cartao-pokemon ${poke.types.join('-')}">
+            <div class="cartao-imagem">
+                <img src="${poke.image}" alt="${poke.name}">
+            </div>
+            
             <div class="detalhes">
                 <h2 class="nome">${poke.name}</h2>
-              
-            </div>
-            <span class="tipo">${poke.types}</span>
 
-            <div class="cartao-imagem">
-                <img src="${poke.image}" alt="${pokemon.name}">
+                <div class="tipos">${poke.types.map((type) =>{
+                  return `<span class="tipo ${type}">${type}</span>`
+                })}</div>
             </div>
         </div>
         `;
     });
-  });
-}
+  };
 
 pokeDetails(fetchPokemons);
 
-function showColor() {
+function showColorPokemon() {
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
+  const typesPokemon = document.querySelectorAll(".tipo")
+  
+  const bgCardPokemon = {
+    fire: "tipo-fogo",
+    grass: "tipo-planta",
+    water: "tipo-agua-dragao",
+    bug: "tipo-inseto",
+    normal: "tipo-voador",
+    poison: "tipo-venenoso",
+    flying: "tipo-voador",
+    "grass-poison": "tipo-planta-veneno",
+    "fire-flying": "tipo-voador-fire",
+    "bug-flying": "tipo-inseto-voador",
+    "normal-flying": "tipo-normal-voador",
+    "bug-poison": "tipo-inseto-veneno"
+  };
+
+  typesPokemon.forEach((element) =>{
+    const types = element.classList;
+    
+    types.forEach((val) =>{
+      if(val in bgCardPokemon){
+        element.classList.add(bgCardPokemon[val])
+      }
+    })
+  })
 
   cardPokemon.forEach((card) => {
-    const type = card.classList[1];
-    console.log(type);
+    const types = card.classList;
 
-    if (type === "fire") {
-      card.classList.add("tipo-fogo");
-    } else if (type == "grass") {
-      card.classList.add("tipo-planta");
-    } else if (type == "water") {
-      card.classList.add("tipo-agua-dragao");
-    } else if (type == "bug") {
-      card.classList.add("tipo-inseto");
-    } else if (type == "normal") {
-      card.classList.add("tipo-voador");
-    }
+    types.forEach((type) => {
+      if (type in bgCardPokemon) {
+        card.classList.add(bgCardPokemon[type]);
+      }
+    });
   });
 }
