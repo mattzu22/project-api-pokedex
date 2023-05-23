@@ -129,6 +129,26 @@ body {
   background-color: #f4e131f4;
 }
 
+.tipo-terra{
+  background-color: #7d5f05;
+}
+
+.tipo-eletrico{
+  background-color: #f0c609;
+}
+
+.tipo-fada{
+  background-color: rgb(250, 134, 250) ;
+}
+
+.tipo-normal-fada{
+  background: linear-gradient(
+    90deg,
+    rgba(218, 167, 12, 1) 25%,
+    rgb(250, 134, 250) 100%
+  );
+}
+
 .tipo-planta-veneno {
   background: linear-gradient(
     90deg,
@@ -137,10 +157,25 @@ body {
   );
 }
 
+.tipo-veneno-terra{
+  background: linear-gradient(
+    100deg,
+    rgba(171, 26, 226, 1) 25%,
+    #7d5f05 60%
+  );
+}
 .tipo-voador-fire {
   background: linear-gradient(
     90deg,
     rgba(210, 52, 52, 1) 35%,
+    rgba(187, 142, 7, 1) 100%
+  );
+}
+
+.tipo-veneno-voador{
+  background: linear-gradient(
+    90deg,
+    rgba(106, 52, 210, 1) 22%,
     rgba(187, 142, 7, 1) 100%
   );
 }

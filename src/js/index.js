@@ -2,7 +2,7 @@ let detailsPokemon = [];
 const cardsPokemons = document.querySelector(".cards-pokemons");
 
 const fetchPokemons = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=10";
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=50";
   const response = await fetch(url);
   return await response.json();
 };
@@ -10,7 +10,6 @@ const fetchPokemons = async () => {
 async function pokeDetails(poke) {
   const { results} = await fetchPokemons();
   const pokemons = results;
-
 
   await Promise.all(
     pokemons.map(async (pokemonData) => {
@@ -29,8 +28,20 @@ async function pokeDetails(poke) {
     })
   );
 
+
+
+
     detailsPokemon.map((poke) => {
-      showColorPokemon();
+      showColorPokemon(poke);
+
+      // function filterInputPoke(){
+      //   const namePokemon = poke.name;
+      //   const inputNamePokemon = document.querySelector("#name-pokemon");
+      //   const valueInput = inputNamePokemon.value
+      //   console.log(valueInput);
+      // }
+
+      // filterInputPoke()
 
       cardsPokemons.innerHTML += `
         <div class="cartao-pokemon ${poke.types.join('-')}">
@@ -52,7 +63,8 @@ async function pokeDetails(poke) {
 
 pokeDetails(fetchPokemons);
 
-function showColorPokemon() {
+function showColorPokemon(poke) {
+  console.log(poke);
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
   const typesPokemon = document.querySelectorAll(".tipo")
   
@@ -64,6 +76,12 @@ function showColorPokemon() {
     normal: "tipo-voador",
     poison: "tipo-venenoso",
     flying: "tipo-voador",
+    ground: "tipo-terra",
+    electric: "tipo-eletrico",
+    fairy: "tipo-fada",
+    "normal-fairy": "tipo-normal-fada",
+    "poison-flying": "tipo-veneno-voador",
+    "poison-ground": "tipo-veneno-terra",
     "grass-poison": "tipo-planta-veneno",
     "fire-flying": "tipo-voador-fire",
     "bug-flying": "tipo-inseto-voador",
