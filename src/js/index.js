@@ -32,7 +32,13 @@ async function pokeDetails(poke) {
 
 
     detailsPokemon.map((poke) => {
-      showColorPokemon(poke);
+      //O problema é provavelmente causado porque que você ta tentando acessar os elementos HTML antes que eles seja renderizados na página
+      // esse settimeout ja resolve
+      // o teto é que no seu caso é um problema de sincronização entre a atualização do DOM e a execução do JS
+      // dai depois que termina tudo ele adiciona essa ultima tarefa do settimeout que dai da tempo de show color terminar de executar
+      setTimeout(() => {
+        showColorPokemon(poke);
+      }, 1);
 
       // function filterInputPoke(){
       //   const namePokemon = poke.name;
