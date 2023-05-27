@@ -1,14 +1,69 @@
 let detailsPokemon = [];
 const cardsPokemons = document.querySelector(".cards-pokemons");
+const searchInput = document.getElementById("search-pokemon");
 
-const fetchPokemons = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=50";
+const fetchPokemons = async (limit) => {
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
   const response = await fetch(url);
   return await response.json();
 };
 
+//criar uma função pra filtrar o valor do input e verificar se possui dentro da api
+const filteredPokemons = (inputValue) => {
+  if (inputValue != "") {
+    //verificar se no detailspokmeon tem o nome digitado no input
+    return detailsPokemon.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(inputValue);
+    });
+  } else {
+    //caso contrario retorne só o array detailsPokemons
+    return detailsPokemon;
+  }
+};
+
+//criar um função pra renderizar a lista de pokemons
+function renderPokemons(pokemon) {
+  cardsPokemons.innerHTML = "";
+  
+  pokemon.map((poke) => {
+    
+    cardsPokemons.innerHTML += `
+    <div class="cartao-pokemon ${poke.types.join("-")}">
+    <div class="cartao-imagem">
+    <img src="${poke.image}" alt="${poke.name}">
+    </div>
+    
+    <div class="detalhes">
+    <h2 class="nome">${poke.name}</h2>
+    
+    <div class="tipos">${poke.types.map((type) => {
+      return `<span class="tipo ${type}">${type}</span>`;
+    })}</div>
+    </div>
+    </div>
+    `;
+    
+    showColorPokemon(poke);
+  });
+  
+
+
+}
+
+//criar uma função que atualiza o array de pokemons
+function updateFilteredPokemon() {
+  //1- capturar o valor do input
+  //2= passar o valor como parâmetro do filteres
+  //3- passar o valor filtrado para a função que renderiza os pokemons
+  const inputValue = searchInput.value.toLowerCase();
+  const filterPokemons = filteredPokemons(inputValue);
+  renderPokemons(filterPokemons);
+}
+
+searchInput, addEventListener("input", updateFilteredPokemon);
+
 async function pokeDetails(poke) {
-  const { results} = await fetchPokemons();
+  const { results } = await fetchPokemons(6);
   const pokemons = results;
 
   await Promise.all(
@@ -28,46 +83,17 @@ async function pokeDetails(poke) {
     })
   );
 
-
-
-
-    detailsPokemon.map((poke) => {
-      showColorPokemon(poke);
-
-      // function filterInputPoke(){
-      //   const namePokemon = poke.name;
-      //   const inputNamePokemon = document.querySelector("#name-pokemon");
-      //   const valueInput = inputNamePokemon.value
-      //   console.log(valueInput);
-      // }
-
-      // filterInputPoke()
-
-      cardsPokemons.innerHTML += `
-        <div class="cartao-pokemon ${poke.types.join('-')}">
-            <div class="cartao-imagem">
-                <img src="${poke.image}" alt="${poke.name}">
-            </div>
-            
-            <div class="detalhes">
-                <h2 class="nome">${poke.name}</h2>
-
-                <div class="tipos">${poke.types.map((type) =>{
-                  return `<span class="tipo ${type}">${type}</span>`
-                })}</div>
-            </div>
-        </div>
-        `;
-    });
-  };
+  renderPokemons(detailsPokemon);
+}
 
 pokeDetails(fetchPokemons);
 
 function showColorPokemon(poke) {
-  console.log(poke);
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
-  const typesPokemon = document.querySelectorAll(".tipo")
-  
+  const typesPokemon = document.querySelectorAll(".tipo");
+
+
+
   const bgCardPokemon = {
     fire: "tipo-fogo",
     grass: "tipo-planta",
@@ -86,22 +112,23 @@ function showColorPokemon(poke) {
     "fire-flying": "tipo-voador-fire",
     "bug-flying": "tipo-inseto-voador",
     "normal-flying": "tipo-normal-voador",
-    "bug-poison": "tipo-inseto-veneno"
+    "bug-poison": "tipo-inseto-veneno",
   };
 
-  typesPokemon.forEach((element) =>{
+  typesPokemon.forEach((element) => {
     const types = element.classList;
-    
-    types.forEach((val) =>{
-      if(val in bgCardPokemon){
-        element.classList.add(bgCardPokemon[val])
+
+    types.forEach((val) => {
+      if (val in bgCardPokemon) {
+        element.classList.add(bgCardPokemon[val]);
       }
-    })
-  })
+    });
+  });
 
   cardPokemon.forEach((card) => {
     const types = card.classList;
 
+    console.log(card);
     types.forEach((type) => {
       if (type in bgCardPokemon) {
         card.classList.add(bgCardPokemon[type]);
