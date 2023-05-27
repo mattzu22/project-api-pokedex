@@ -24,7 +24,7 @@ const filteredPokemons = (inputValue) => {
 //criar um função pra renderizar a lista de pokemons
 function renderPokemons(pokemon) {
   cardsPokemons.innerHTML = "";
-  
+
   pokemon.map((poke) => {
     
     cardsPokemons.innerHTML += `
@@ -42,7 +42,6 @@ function renderPokemons(pokemon) {
     </div>
     </div>
     `;
-    
     showColorPokemon(poke);
   });
   
