@@ -1,23 +1,42 @@
 let detailsPokemon = [];
 const cardsPokemons = document.querySelector(".cards-pokemons");
 const searchInput = document.getElementById("search-pokemon");
-const loadPokemons = document.getElementById("btn");
+const btn = document.getElementById("btn");
 
-let offSet = 0;
+// function carregarMaisDez() {
+//   detailsPokemon += fetchPokemons()
+  
+// }
 
-async function loadMorePokemons(){
-  offSet += 10
-  await fetchPokemons(offSet)
-  updateFilteredPokemon()
-}
+// btn.addEventListener("click", ()=> carregarMaisDez())
 
-loadPokemons.addEventListener("click", loadMorePokemons)
 
-const fetchPokemons = async (offset) => {
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=${offset}`;
-  const response = await fetch(url);
-  return await response.json();
-};
+
+
+
+
+const fetchPokemons = async () => {
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=10`;
+    const response = await fetch(url);
+    const json =  await response.json();
+    const { results } = json
+    results.map(pokemon =>{
+      const namePokemon = pokemon.name
+      pokemonsData(namePokemon)
+    })
+  };
+  
+  
+  const pokemonsData = async (pokemons)=>{
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemons}`
+      const response = await fetch(url)
+      const json = await response.json()
+      console.log(json);
+  }
+  
+
+
+
 
 //criar uma função pra filtrar o valor do input e verificar se possui dentro da api
 const filteredPokemons = (inputValue) => {
@@ -66,12 +85,12 @@ function updateFilteredPokemon() {
   renderPokemons(filterPokemons);
 }
 
-// searchInput.addEventListener("input", updateFilteredPokemon);
+searchInput.addEventListener("input", updateFilteredPokemon);
 
 async function pokeDetails(poke) {
 
-  const { results } = await fetchPokemons();
-  const pokemons = results;
+  const pokemons  = await fetchPokemons();
+  console.log(pokemons);
 
   await Promise.all(
     pokemons.map(async (pokemonData) => {
@@ -98,6 +117,8 @@ pokeDetails(fetchPokemons);
 function showColorPokemon(poke) {
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
   const typesPokemon = document.querySelectorAll(".tipo");
+
+
 
   const bgCardPokemon = {
     fire: "tipo-fogo",
