@@ -30,7 +30,6 @@ function updateFilteredPokemon() {
 
 buttonSearch.addEventListener('click', updateFilteredPokemon)
 
-
 function renderPokemons(pokemon) {
   let pokemons = pokemon.map((poke) => 
    `<div class="cartao-pokemon ${poke.types.join("-")}">
