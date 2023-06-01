@@ -1,101 +1,108 @@
 let detailsPokemon = [];
 const cardsPokemons = document.querySelector(".cards-pokemons");
 const searchInput = document.getElementById("search-pokemon");
+const buttonSearch = document.getElementById("search");
 const loadPokemons = document.getElementById("btn");
+let offset = 0;
+const limit = 10;
 
-let offSet = 0;
-
-async function loadMorePokemons(){
-  offSet += 10
-  await fetchPokemons(offSet)
-  updateFilteredPokemon()
-}
-
-loadPokemons.addEventListener("click", loadMorePokemons)
-
-const fetchPokemons = async (offset) => {
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=${offset}`;
+const fetchPokemons = async (offSet) => {
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`;
   const response = await fetch(url);
   return await response.json();
 };
 
-//criar uma função pra filtrar o valor do input e verificar se possui dentro da api
 const filteredPokemons = (inputValue) => {
-  if (inputValue != "") {
-    //verificar se no detailspokmeon tem o nome digitado no input
+  if (inputValue !== "") {
     return detailsPokemon.filter((pokemon) => {
       return pokemon.name.toLowerCase().includes(inputValue);
     });
   } else {
-    //caso contrario retorne só o array detailsPokemons
     return detailsPokemon;
-  }
+}
 };
 
-//criar um função pra renderizar a lista de pokemons
-function renderPokemons(pokemon) {
-
-  pokemon.map((poke) => {
-    
-    cardsPokemons.innerHTML += `
-    <div class="cartao-pokemon ${poke.types.join("-")}">
-    <div class="cartao-imagem">
-    <img src="${poke.image}" alt="${poke.name}">
-    </div>
-    
-    <div class="detalhes">
-    <h2 class="nome">${poke.name}</h2>
-    
-    <div class="tipos">${poke.types.map((type) => {
-      return `<span class="tipo ${type}">${type}</span>`;
-    })}</div>
-    </div>
-    </div>
-    `;
-    showColorPokemon(poke);
-  });
-}
-
-//criar uma função que atualiza o array de pokemons
 function updateFilteredPokemon() {
-  //1- capturar o valor do input
-  //2= passar o valor como parâmetro do filteres
-  //3- passar o valor filtrado para a função que renderiza os pokemons
   const inputValue = searchInput.value.toLowerCase();
   const filterPokemons = filteredPokemons(inputValue);
   renderPokemons(filterPokemons);
 }
 
-// searchInput.addEventListener("input", updateFilteredPokemon);
+buttonSearch.addEventListener('click', updateFilteredPokemon)
 
-async function pokeDetails(poke) {
 
-  const { results } = await fetchPokemons();
-  const pokemons = results;
+function renderPokemons(pokemon) {
+  let pokemons = pokemon.map((poke) => 
+   `<div class="cartao-pokemon ${poke.types.join("-")}">
+      <div class="cartao-imagem">
+        <img src="${poke.image}" alt="${poke.name}">
+      </div>
+      <div class="detalhes">
+        <h2 class="nome">${poke.name}</h2>
+        <div class="tipos">${poke.types
+          .map((type) => {
+            return `<span class="tipo ${type}">${type}</span>`;
+          })
+          .join("")}</div>
+      </div>
+    </div>
+    `
+);
+cardsPokemons.innerHTML = "";
+cardsPokemons.innerHTML += pokemons;
+
+showColorPokemon();
+}
+
+
+
+async function pokeDetails() {
+  const data = await fetchPokemons(offset);
+  const { results } = data;
 
   await Promise.all(
-    pokemons.map(async (pokemonData) => {
-      const url = pokemonData.url;
-      const response = await fetch(url);
-      const pokemon = await response.json();
-
-      const types = pokemon.types.map((type) => type.type.name);
-
-      detailsPokemon.push({
-        name: pokemon.name,
-        image: pokemon.sprites.front_default,
-        id: pokemon.id,
-        types: types,
-      });
+    results.map(async (pokemonData) => {
+      await fillPokemonsDetails(pokemonData);
     })
   );
 
-  renderPokemons(detailsPokemon);
+  renderPokemons(detailsPokemon)
 }
 
-pokeDetails(fetchPokemons);
+function fetchMorePokemons() {
+  offset += limit;
+  fetchPokemons(offset).then((data) => {
+    const { results } = data;
+    results.map(async (pokemonData) => {
+      await fillPokemonsDetails(pokemonData);
+    });
+  });
 
-function showColorPokemon(poke) {
+  renderPokemons(detailsPokemon)
+}
+
+async function fillPokemonsDetails(pokemonData) {
+  const url = pokemonData.url;
+  const response = await fetch(url);
+  const pokemon = await response.json();
+
+  const types = pokemon.types.map((type) => type.type.name);
+
+  detailsPokemon.push({
+    name: pokemon.name,
+    image: pokemon.sprites.front_default,
+    id: pokemon.id,
+    types: types,
+  });
+}
+
+loadPokemons.addEventListener("click", fetchMorePokemons);
+
+pokeDetails();
+
+
+
+function showColorPokemon() {
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
   const typesPokemon = document.querySelectorAll(".tipo");
 
