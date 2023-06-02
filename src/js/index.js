@@ -19,8 +19,12 @@ const filteredPokemons = (inputValue) => {
     });
   } else {
     return detailsPokemon;
-}
+  }
 };
+
+loadPokemons.addEventListener("click", () => {
+  loadPokemons.classList.add("clicado");
+});
 
 function updateFilteredPokemon() {
   const inputValue = searchInput.value.toLowerCase();
@@ -28,13 +32,14 @@ function updateFilteredPokemon() {
   renderPokemons(filterPokemons);
 }
 
-buttonSearch.addEventListener('click', updateFilteredPokemon)
+buttonSearch.addEventListener("click", updateFilteredPokemon);
 
-function renderPokemons(pokemon) {
-  let pokemons = pokemon.map((poke) => 
-   `<div class="cartao-pokemon ${poke.types.join("-")}">
+ function renderPokemons(pokemon) {
+  let pokemons = pokemon.map(
+    (poke) =>
+      `<div class="cartao-pokemon ${poke.types.join("-")}">
       <div class="cartao-imagem">
-        <img src="${poke.image}" alt="${poke.name}">
+        <img src="${poke.image}" id="${poke.name}" alt="${poke.name}">
       </div>
       <div class="detalhes">
         <h2 class="nome">${poke.name}</h2>
@@ -44,16 +49,24 @@ function renderPokemons(pokemon) {
           })
           .join("")}</div>
       </div>
-    </div>
+    </div>.
     `
-);
-cardsPokemons.innerHTML = "";
-cardsPokemons.innerHTML += pokemons;
+  );
+  cardsPokemons.innerHTML = "";
+  cardsPokemons.innerHTML += pokemons;
+  const cartaoPokemon = document.querySelectorAll(".cartao-pokemon");
 
-showColorPokemon();
+  const pokemonId = cartaoPokemon.forEach((cartao) => {
+    cartao.addEventListener("click", async (e) => {
+      return e.target.id;
+      // const url = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
+      // const response = await fetch(url);
+      // const json = await response.json();  
+    });
+  });
+
+  showColorPokemon();
 }
-
-
 
 async function pokeDetails() {
   const data = await fetchPokemons(offset);
@@ -65,7 +78,7 @@ async function pokeDetails() {
     })
   );
 
-  renderPokemons(detailsPokemon)
+  renderPokemons(detailsPokemon);
 }
 
 function fetchMorePokemons() {
@@ -77,7 +90,7 @@ function fetchMorePokemons() {
     });
   });
 
-  renderPokemons(detailsPokemon)
+  renderPokemons(detailsPokemon);
 }
 
 async function fillPokemonsDetails(pokemonData) {
@@ -99,8 +112,6 @@ loadPokemons.addEventListener("click", fetchMorePokemons);
 
 pokeDetails();
 
-
-
 function showColorPokemon() {
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
   const typesPokemon = document.querySelectorAll(".tipo");
@@ -108,14 +119,18 @@ function showColorPokemon() {
   const bgCardPokemon = {
     fire: "tipo-fogo",
     grass: "tipo-planta",
-    water: "tipo-agua-dragao",
+    water: "tipo-agua",
     bug: "tipo-inseto",
-    normal: "tipo-voador",
+    normal: "tipo-normal",
     poison: "tipo-venenoso",
     flying: "tipo-voador",
     ground: "tipo-terra",
     electric: "tipo-eletrico",
     fairy: "tipo-fada",
+    fighting: "tipo-lutador",
+    psychic: "tipo-psiquico",
+    "water-poison": "tipo-agua-veneno",
+    "water-fighting": "tipo-agua-lutador",
     "normal-fairy": "tipo-normal-fada",
     "poison-flying": "tipo-veneno-voador",
     "poison-ground": "tipo-veneno-terra",
@@ -124,6 +139,7 @@ function showColorPokemon() {
     "bug-flying": "tipo-inseto-voador",
     "normal-flying": "tipo-normal-voador",
     "bug-poison": "tipo-inseto-veneno",
+    "bug-grass": "tipo-inseto-planta",
   };
 
   typesPokemon.forEach((element) => {
@@ -146,3 +162,7 @@ function showColorPokemon() {
     });
   });
 }
+
+
+
+

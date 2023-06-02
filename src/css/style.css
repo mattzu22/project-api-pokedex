@@ -3,15 +3,20 @@ body {
   background-size: cover;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .header .search {
@@ -53,8 +58,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-top: 100px;
+  gap: 10px;
+  margin-top: 50px;
   flex-wrap: wrap;
 }
 
@@ -62,11 +67,22 @@ body {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   width: 250px;
+  transition: 0.5s ease-in-out;
+  max-width: 100%;
+}
+
+.cartao-pokemon:hover {
+  transform: scale(1.1);
 }
 
 .cartao-pokemon .nome {
   margin-bottom: 3px;
   margin-top: 0;
+}
+
+.cartao-pokemon .tipos {
+  display: flex;
+  gap: 5px;
 }
 
 .cartao-pokemon .tipo {
@@ -102,113 +118,195 @@ body {
   max-width: 100%;
 }
 
-.btn{
-  border: none;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  margin-top: 30px;
+.c-loader {
+  margin-top: 20px;
+  border: 6px solid #e5e5e5;
+  border-radius: 6px;
+  border-top-color: #51d4db;
+  height: 50px;
+  transition: 0.5s ease-in-out;
 }
 
+.c-loader.clicado {
+  animation: is-rotating 1s infinite;
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #51d4db;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  font-size: 0;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+
 .tipo-fogo {
-  background-color: #d23434ec;
+  background-color: #fd7d24;
 }
 
 .tipo-venenoso {
-  background-color: #9c05baf2;
+  background-color: #b97fc9;
 }
 
-.tipo-agua-dragao {
-  background-color: #75eefef0;
+.tipo-agua {
+  background-color: #4592c4;
 }
 
 .tipo-planta {
-  background-color: #64e296f0;
+  background-color: #9bcc50;
 }
 
 .tipo-fantasma {
-  background-color: #a34bb2f0;
+  background-color: #7b62a3;
 }
 
 .tipo-voador {
-  background-color: #bb8e07f4;
+  background-color: #3dc7ef;
 }
 
 .tipo-inseto {
-  background-color: #f4e131f4;
+  background-color: #d0c240f4;
 }
 
 .tipo-terra{
-  background-color: #7d5f05;
+  background-color: #f7de3f;
 }
 
 .tipo-eletrico{
-  background-color: #f0c609;
+  background-color: #eed535;
 }
 
 .tipo-fada{
-  background-color: rgb(250, 134, 250) ;
+  background-color: #fdb9e9;
+}
+
+.tipo-pedra{
+  background-color: #a38c21;
+}
+
+.tipo-normal{
+  background-color: #a4acaf;
+}
+
+.tipo-lutador{
+  background-color: #d56723;
+}
+
+.tipo-psiquico{
+  background-color: #f366b9;
+}
+
+.tipo-gelo{
+  background-color: #51c4e7;
+}
+/* 
+  rock-ground
+  rock-ground ao contrario
+  water-psychic
+  eletric-steel
+  water-ice
+  ghost-poison
+  grass-psychic
+  psychic-fairy
+  water-flying
+  water-psychic
+  ice-psychic
+  rock-water
+  dragon
+  dragon-flying
+  eletric-flying
+  rock-flying
+  ice-flying
+*/
+
+.tipo-agua-lutador{
+  background: linear-gradient(
+    90deg,
+    #4592c4 25%,
+    #d56723 60%
+  );
+}
+
+.tipo-agua-veneno{
+  background: linear-gradient(
+    90deg,
+    #4592c4 25%,
+    #b97fc9 60%
+  );
 }
 
 .tipo-normal-fada{
   background: linear-gradient(
     90deg,
-    rgba(218, 167, 12, 1) 25%,
-    rgb(250, 134, 250) 100%
+    #a4acaf 25%,
+    #fdb9e9 60%
+  );
+}
+
+.tipo-inseto-planta{
+  background: linear-gradient(
+    90deg,
+    #d0c240f4 25%,
+    #9bcc50 80%
   );
 }
 
 .tipo-planta-veneno {
   background: linear-gradient(
     90deg,
-    rgba(100, 226, 150, 1) 35%,
-    rgba(171, 26, 226, 1) 100%
+    #9bcc50 35%,
+    #b97fc9 100%
   );
 }
 
 .tipo-veneno-terra{
   background: linear-gradient(
     100deg,
-    rgba(171, 26, 226, 1) 25%,
-    #7d5f05 60%
+    #b97fc9 25%,
+    #f7de3f 60%
   );
 }
 .tipo-voador-fire {
   background: linear-gradient(
     90deg,
-    rgba(210, 52, 52, 1) 35%,
-    rgba(187, 142, 7, 1) 100%
+    #3dc7ef 35%,
+    #fd7d24 100%
   );
 }
 
 .tipo-veneno-voador{
   background: linear-gradient(
     90deg,
-    rgba(106, 52, 210, 1) 22%,
-    rgba(187, 142, 7, 1) 100%
+    #b97fc9 22%,
+    #3dc7ef 100%
   );
 }
 
 .tipo-inseto-veneno {
   background: linear-gradient(
     90deg,
-    rgba(106, 52, 210, 1) 35%,
-    rgba(187, 142, 7, 1) 100%
+    #d0c240f4 15%,
+    #b97fc9 100%
   );
 }
 
 .tipo-inseto-voador {
   background: linear-gradient(
     90deg,
-    rgba(106, 52, 210, 1) 35%,
-    rgba(187, 142, 7, 1) 100%
+    #d0c240f4 35%,
+    #bb8e07f4 100%
   );
 }
 
 .tipo-normal-voador {
   background: linear-gradient(
     90deg,
-    rgba(215, 59, 230, 1) 35%,
-    rgba(218, 167, 12, 1) 83%
+    #a4acaf 35%,
+    #3dc7ef 83%
   );
 }
