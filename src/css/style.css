@@ -69,6 +69,21 @@ body {
   width: 250px;
   transition: 0.5s ease-in-out;
   max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.cartao-pokemon:before{
+  content: "";
+  background: url(../image/cinema.png) center center no-repeat;
+  filter: invert(100%);
+  display: block;
+  width: 130%;
+  height: 130%;
+  background-size: cover;
+  opacity: 0.8;
+  position: absolute;
+  top: -50px;
 }
 
 .cartao-pokemon:hover {
@@ -104,6 +119,8 @@ body {
   padding: 15px 8px;
   background-color: rgba(255, 255, 255, 0.787);
   color: black;
+  z-index: 10;
+  position: relative;
 }
 
 .cartao-pokemon .cartao-imagem {
@@ -116,6 +133,7 @@ body {
 
 .cartao-pokemon .cartao-imagem img {
   max-width: 100%;
+  z-index: 10;
 }
 
 .c-loader {
@@ -143,7 +161,6 @@ body {
     transform: rotate(1turn);
   }
 }
-
 
 .tipo-fogo {
   background-color: #fd7d24;

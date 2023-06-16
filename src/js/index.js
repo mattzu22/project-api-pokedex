@@ -34,36 +34,27 @@ function updateFilteredPokemon() {
 
 buttonSearch.addEventListener("click", updateFilteredPokemon);
 
- function renderPokemons(pokemon) {
+function renderPokemons(pokemon) {
   let pokemons = pokemon.map(
     (poke) =>
-      `<div class="cartao-pokemon ${poke.types.join("-")}">
-      <div class="cartao-imagem">
-        <img src="${poke.image}" id="${poke.name}" alt="${poke.name}">
-      </div>
-      <div class="detalhes">
-        <h2 class="nome">${poke.name}</h2>
-        <div class="tipos">${poke.types
-          .map((type) => {
-            return `<span class="tipo ${type}">${type}</span>`;
-          })
-          .join("")}</div>
-      </div>
-    </div>.
+        `
+        <div class="cartao-pokemon ${poke.types.join("-")}">
+          <a class="cartao-imagem" href="./pokemon.html?name=${poke.name}">
+            <img src="${poke.image}" id="${poke.name}" alt="${poke.name}">
+          </a>
+          <div class="detalhes">
+            <h2 class="nome">${poke.name}</h2>
+            <div class="tipos">${poke.types
+              .map((type) => {
+                return `<span class="tipo ${type}">${type}</span>`;
+              })
+              .join("")}</div>
+          </div>
+         </div>.
     `
   );
   cardsPokemons.innerHTML = "";
   cardsPokemons.innerHTML += pokemons;
-  const cartaoPokemon = document.querySelectorAll(".cartao-pokemon");
-
-  const pokemonId = cartaoPokemon.forEach((cartao) => {
-    cartao.addEventListener("click", async (e) => {
-      return e.target.id;
-      // const url = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
-      // const response = await fetch(url);
-      // const json = await response.json();  
-    });
-  });
 
   showColorPokemon();
 }
@@ -162,7 +153,3 @@ function showColorPokemon() {
     });
   });
 }
-
-
-
-
