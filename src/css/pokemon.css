@@ -52,11 +52,27 @@ body {
     color: white;
 }
 
+.detail-pokemon .info-right .info-pokemon .btn-shiny{
+  position: absolute;
+  right: 40px;
+  top: 70px;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(232, 67, 67);
+  border: 4px solid rgb(228, 224, 224);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
 .detail-pokemon .info-pokemon{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     padding: 15px 35px 0 35px;
+    position: relative;
 }
 
 .detail-pokemon .container-poke-details .img-pokemon{
@@ -89,7 +105,6 @@ body {
     margin-bottom: 3px;
     font-size: 15px;
 }
-
 
 .tipo-fogo {
     background-color: #fd7d24;

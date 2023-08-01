@@ -18,25 +18,40 @@ async function renderPokemon() {
     const nameStats = stat.stat.name;
     const baseStats = stat.base_stat;
     return { nameStats, baseStats };
-  });;
- 
+  });
 
   const { moves } = pokemon;
   const movesSelect = moves.slice(0, 4);
 
   const { abilities } = pokemon;
-  const pokeAbilities = abilities.map(async (ability) => {
+
+  const nameAbilities = abilities.map((ability) => ability.ability.name);
+
+  const urlAbilityPromises = abilities.map(async (ability) => {
     const nameAbility = ability.ability.name;
     const urlAbility = ability.ability.url;
     const response = await fetch(urlAbility);
     const json = await response.json();
     const description = json.effect_entries;
-    description.map((val) => {
-      if (val.language.name == "en") {
-        return val.effect;
-      }
-    });
+    const descriptionAbility = description
+      .filter((val) => val.language.name === "en")
+      .map((val) => ({
+        nameAbility: nameAbility,
+        effect: val.effect
+      }));
+    return descriptionAbility;
   });
+
+  Promise.all(urlAbilityPromises)
+  .then((results) => {
+    results.map(result =>{
+      detailPokemon.push({
+        nameAbility: result[0].nameAbility,
+        effect: result[0].effect
+      })
+    })
+  })
+  
 
   const types = pokemon.types.map((type) => type.type.name);
 
@@ -63,6 +78,8 @@ async function renderPokemon() {
             .join("")}</div>
           </div>  
         <p class="number">#00${detail.id}</p>
+
+        <button class="btn-shiny"></button>
       </div>
 
       <div class="container-poke-details">
@@ -81,6 +98,8 @@ async function renderPokemon() {
                 .join("")}
             </ul>
           </div>
+         
+
           <div class="abilities">
               <h3>Habilidades</h3>
 
@@ -101,7 +120,24 @@ async function renderPokemon() {
     `;
   });
 
+  const btnShiny = document.querySelector(".btn-shiny");
+
+  btnShiny.addEventListener("click", () => {
+    changerPokemonShiny(btnShiny);
+  });
+
   showColorPokemon();
+}
+
+async function changerPokemonShiny(btn) {
+  const pokemon = await getDetailsPokemon(getUrlFlagName);
+  const imgPokemon = document.querySelector(".img-pokemon");
+  const shinyPokemon = pokemon.sprites.front_shiny;
+
+  if (shinyPokemon) {
+    imgPokemon.setAttribute("src", shinyPokemon);
+    btn.style.backgroundColor = "green";
+  }
 }
 
 renderPokemon();
@@ -156,3 +192,10 @@ function showColorPokemon() {
     });
   });
 }
+
+   
+// ${detail.nameAbilities
+//   .map((ability) => {
+//     return `<p>${ability}</p>`;
+//   })
+//   .join(" ")}

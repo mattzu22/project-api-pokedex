@@ -22,9 +22,6 @@ const filteredPokemons = (inputValue) => {
   }
 };
 
-loadPokemons.addEventListener("click", () => {
-  loadPokemons.classList.add("clicado");
-});
 
 function updateFilteredPokemon() {
   const inputValue = searchInput.value.toLowerCase();
@@ -32,7 +29,6 @@ function updateFilteredPokemon() {
   renderPokemons(filterPokemons);
 }
 
-buttonSearch.addEventListener("click", updateFilteredPokemon);
 
 function renderPokemons(pokemon) {
   let pokemons = pokemon.map(
@@ -72,16 +68,20 @@ async function pokeDetails() {
   renderPokemons(detailsPokemon);
 }
 
-function fetchMorePokemons() {
+pokeDetails();
+
+ function fetchMorePokemons() {
   offset += limit;
   fetchPokemons(offset).then((data) => {
     const { results } = data;
     results.map(async (pokemonData) => {
       await fillPokemonsDetails(pokemonData);
+
+      if(fillPokemonsDetails){
+        renderPokemons(detailsPokemon);
+      }
     });
   });
-
-  renderPokemons(detailsPokemon);
 }
 
 async function fillPokemonsDetails(pokemonData) {
@@ -99,14 +99,10 @@ async function fillPokemonsDetails(pokemonData) {
   });
 }
 
-loadPokemons.addEventListener("click", fetchMorePokemons);
-
-pokeDetails();
-
 function showColorPokemon() {
   const cardPokemon = document.querySelectorAll(".cartao-pokemon");
   const typesPokemon = document.querySelectorAll(".tipo");
-
+  
   const bgCardPokemon = {
     fire: "tipo-fogo",
     grass: "tipo-planta",
@@ -132,20 +128,20 @@ function showColorPokemon() {
     "bug-poison": "tipo-inseto-veneno",
     "bug-grass": "tipo-inseto-planta",
   };
-
+  
   typesPokemon.forEach((element) => {
     const types = element.classList;
-
+    
     types.forEach((val) => {
       if (val in bgCardPokemon) {
         element.classList.add(bgCardPokemon[val]);
       }
     });
   });
-
+  
   cardPokemon.forEach((card) => {
     const types = card.classList;
-
+    
     types.forEach((type) => {
       if (type in bgCardPokemon) {
         card.classList.add(bgCardPokemon[type]);
@@ -153,3 +149,17 @@ function showColorPokemon() {
     });
   });
 }
+
+// loadPokemons.addEventListener("click", fetchMorePokemons);
+
+loadPokemons.addEventListener("click", () => {
+  loadPokemons.classList.add("button--loading");
+
+  setTimeout(() => {
+    fetchMorePokemons()
+    loadPokemons.classList.remove("button--loading");
+  }, 2000);
+});
+
+
+buttonSearch.addEventListener("click", updateFilteredPokemon);
