@@ -133,10 +133,15 @@ async function changerPokemonShiny(btn) {
   const pokemon = await getDetailsPokemon(getUrlFlagName);
   const imgPokemon = document.querySelector(".img-pokemon");
   const shinyPokemon = pokemon.sprites.front_shiny;
+  const normalPokemon = pokemon.sprites.front_default;
+  const urlImgAtual = imgPokemon.getAttribute("src");
 
-  if (shinyPokemon) {
+  if (urlImgAtual === normalPokemon) {
     imgPokemon.setAttribute("src", shinyPokemon);
     btn.style.backgroundColor = "green";
+  }else{
+    imgPokemon.setAttribute("src", normalPokemon);
+    btn.style.backgroundColor = "red";
   }
 }
 
