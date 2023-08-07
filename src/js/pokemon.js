@@ -12,7 +12,6 @@ async function getDetailsPokemon(pokemom) {
 
 async function renderPokemon() {
   const pokemon = await getDetailsPokemon(getUrlFlagName);
-  const shinyPokemon = pokemon.sprites.front_shiny;
 
   const infoStats = pokemon.stats.map((stat) => {
     const nameStats = stat.stat.name;
@@ -137,11 +136,19 @@ async function changerPokemonShiny(btn) {
   const urlImgAtual = imgPokemon.getAttribute("src");
 
   if (urlImgAtual === normalPokemon) {
-    imgPokemon.setAttribute("src", shinyPokemon);
+    imgPokemon.style.opacity = 0;
     btn.style.backgroundColor = "green";
+    setTimeout(() => {
+      imgPokemon.setAttribute("src", shinyPokemon);
+      imgPokemon.style.opacity = 1;
+    }, 200);
   }else{
-    imgPokemon.setAttribute("src", normalPokemon);
+    imgPokemon.style.opacity = 0;
     btn.style.backgroundColor = "red";
+    setTimeout(() => {
+      imgPokemon.setAttribute("src", normalPokemon);
+      imgPokemon.style.opacity = 1;
+    }, 200);
   }
 }
 

@@ -13,6 +13,17 @@ body {
     max-width: 700px;
     width: 100%;
     justify-content: space-between;
+    animation: changer-shiny 1s ease-in-out;
+}
+
+@keyframes changer-shiny {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .detail-pokemon .info-right{
@@ -64,7 +75,7 @@ body {
   border: 4px solid rgb(228, 224, 224);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   cursor: pointer;
-  transition: 0.4s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .detail-pokemon .info-pokemon{
@@ -79,7 +90,9 @@ body {
    width: 100%;
    height: 250px;
    object-fit: contain;
+   transition: 0.5s ease-in-out;
 }
+
 
 .detail-pokemon .info-right .container-poke-details .poke-details{
     display: flex;

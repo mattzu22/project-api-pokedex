@@ -1,0 +1,22 @@
+
+
+{
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-jest": "^27.3.1"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "esModuleInterop": true
+  }
+}

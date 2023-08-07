@@ -1,4 +1,4 @@
-import { fetchPokemons } from "./services/pokemons.js";
+import { fetchPokemons } from "./services/fetchPokemons.js";
 import { screenPokemons } from "./objects/screen-pokemons.js";
 import fillPokemonsDetails from "./services/fillPokemons.js";
 import updateFilteredPokemon from "./functions/updateFilteredPokemon.js";
@@ -28,7 +28,7 @@ pokeDetails();
 
 loadPokemons.addEventListener("click", () => {
   loadPokemons.classList.add("button--loading");
-
+  
   setTimeout(() => {
     fetchMorePokemons();
     loadPokemons.classList.remove("button--loading");

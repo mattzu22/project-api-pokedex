@@ -1,4 +1,4 @@
-import { fetchPokemons } from "./pokemons.js";
+import { fetchPokemons }  from "./fetchPokemons.js";
 import { screenPokemons } from "../objects/screen-pokemons.js";
 import fillPokemonsDetails from "./fillPokemons.js";
 import { detailsPokemon } from "../variables.js";
