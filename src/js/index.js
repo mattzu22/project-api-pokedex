@@ -3,10 +3,10 @@ import { screenPokemons } from "./objects/screen-pokemons.js";
 import fillPokemonsDetails from "./services/fillPokemons.js";
 import updateFilteredPokemon from "./functions/updateFilteredPokemon.js";
 import {
-  detailsPokemon,
   buttonSearch,
   loadPokemons,
 } from "./variables.js";
+import { detailsPokemon } from "./services.js";
 import fetchMorePokemons from "./services/morePokemons.js";
 
 let offset = 0;

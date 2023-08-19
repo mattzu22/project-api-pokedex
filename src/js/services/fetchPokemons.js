@@ -1,4 +1,4 @@
-import {baseUrl, limit} from '../variables.js'
+import {baseUrl, limit} from '../services.js'
 
 
 export const fetchPokemons = async (offSet) => {
@@ -7,6 +7,7 @@ export const fetchPokemons = async (offSet) => {
     return await response.json();
   };
 
+  
 
 
   

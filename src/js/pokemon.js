@@ -36,21 +36,19 @@ async function renderPokemon() {
       .filter((val) => val.language.name === "en")
       .map((val) => ({
         nameAbility: nameAbility,
-        effect: val.effect
+        effect: val.effect,
       }));
     return descriptionAbility;
   });
 
-  Promise.all(urlAbilityPromises)
-  .then((results) => {
-    results.map(result =>{
+  Promise.all(urlAbilityPromises).then((results) => {
+    results.map((result) => {
       detailPokemon.push({
         nameAbility: result[0].nameAbility,
-        effect: result[0].effect
-      })
-    })
-  })
-  
+        effect: result[0].effect,
+      });
+    });
+  });
 
   const types = pokemon.types.map((type) => type.type.name);
 
@@ -85,6 +83,13 @@ async function renderPokemon() {
         <img src=${detail.image} class="img-pokemon"/>
             
         <div class="poke-details">
+          <nav>
+            <ul>
+              <li>Status</li>
+              <li>Habilidades</li>
+              <li>Moves</li>
+            </ul>
+          </nav>
 
           <div class="status">
             <h3>Status</h3>
@@ -142,7 +147,7 @@ async function changerPokemonShiny(btn) {
       imgPokemon.setAttribute("src", shinyPokemon);
       imgPokemon.style.opacity = 1;
     }, 200);
-  }else{
+  } else {
     imgPokemon.style.opacity = 0;
     btn.style.backgroundColor = "red";
     setTimeout(() => {
@@ -205,7 +210,6 @@ function showColorPokemon() {
   });
 }
 
-   
 // ${detail.nameAbilities
 //   .map((ability) => {
 //     return `<p>${ability}</p>`;

@@ -1,4 +1,4 @@
-import { detailsPokemon } from "../variables.js";
+import { detailsPokemon } from "../services.js";
 
 export default async function fillPokemonsDetails(pokemonData) {
     const url = pokemonData.url;
