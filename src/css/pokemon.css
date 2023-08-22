@@ -1,19 +1,19 @@
 body {
-    background: url(../image/pokemon.png) center center no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    font-family: "Poppins", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+  background: url(../image/pokemon.png) center center no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-.detail-pokemon{
-    max-width: 700px;
-    width: 100%;
-    justify-content: space-between;
-    animation: changer-shiny 1s ease-in-out;
+.detail-pokemon {
+  max-width: 700px;
+  width: 100%;
+  justify-content: space-between;
+  animation: changer-shiny 1s ease-in-out;
 }
 
 @keyframes changer-shiny {
@@ -26,44 +26,44 @@ body {
   }
 }
 
-.detail-pokemon .info-right{
-    border-radius: 20px;
-    width: 430px;
+.detail-pokemon .info-right {
+  border-radius: 20px;
+  width: 430px;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .name{
-    margin-bottom: 5px;
-    font-size: 30px;
-    font-weight: 800;
-    color: white;
+.detail-pokemon .info-right .info-pokemon .name-type .name {
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .name::first-letter{
+.detail-pokemon .info-right .info-pokemon .name-type .name::first-letter {
   text-transform: uppercase;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .types{
-    display: flex;
-    gap: 5px;
+.detail-pokemon .info-right .info-pokemon .name-type .types {
+  display: flex;
+  gap: 5px;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .types .type{
-    font-size: 13px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 6px;
-    padding: 3px 15px;
-    color: white;
-    opacity: 0.8;
+.detail-pokemon .info-right .info-pokemon .name-type .types .type {
+  font-size: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 6px;
+  padding: 3px 15px;
+  color: white;
+  opacity: 0.8;
 }
 
-.detail-pokemon .info-right .info-pokemon .number{
-    font-size: 17px;
-    font-weight: 800;
-    margin-top: 12px;
-    color: white;
+.detail-pokemon .info-right .info-pokemon .number {
+  font-size: 17px;
+  font-weight: 800;
+  margin-top: 12px;
+  color: white;
 }
 
-.detail-pokemon .info-right .info-pokemon .btn-shiny{
+.detail-pokemon .info-right .info-pokemon .btn-shiny {
   position: absolute;
   right: 40px;
   top: 70px;
@@ -78,192 +78,176 @@ body {
   transition: 0.2s ease-in-out;
 }
 
-.detail-pokemon .info-pokemon{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 15px 35px 0 35px;
-    position: relative;
+.detail-pokemon .info-pokemon {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 15px 35px 0 35px;
+  position: relative;
 }
 
-.detail-pokemon .container-poke-details .img-pokemon{
-   width: 100%;
-   height: 250px;
-   object-fit: contain;
-   transition: 0.5s ease-in-out;
+.detail-pokemon .container-poke-details .img-pokemon {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  transition: 0.5s ease-in-out;
 }
 
-
-.detail-pokemon .info-right .container-poke-details .poke-details{
-    display: flex;
-    justify-content: space-between;
-    background-color: #ffffffc9;
-    opacity: 0.8;
-    border-radius: 25px;
-    padding: 30px 30px 50px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.detail-pokemon .info-right .container-poke-details .poke-details .navegation ul{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(237, 177, 177);
+  width: 100%;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .abilities h3,
+.detail-pokemon .info-right .container-poke-details .poke-details .navegation ul li.selecionado{
+  background-color: rgb(135, 139, 239);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: white;
+}
+
+.detail-pokemon .info-right .container-poke-details .poke-details {
+  background-color: #ffffffc9;
+  opacity: 0.8;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.detail-pokemon .info-right .container-poke-details .poke-details .info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px 20px;
+}
+
+.detail-pokemon .info-right .container-poke-details .poke-details .moves h3,
 .detail-pokemon .info-right .container-poke-details .poke-details .status h3 {
-    font-size: 23px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #6B727A;
+  font-size: 23px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #6b727a;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .abilities ul li,
-.detail-pokemon .info-right .container-poke-details .poke-details .status ul li{
-    border-bottom: 1px solid #C3C4C5;
-    padding: 0 0 5px;
-    margin-bottom: 3px;
-    font-size: 15px;
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .moves
+  ul
+  li,
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .status
+  ul
+  li {
+  border-bottom: 1px solid #c3c4c5;
+  padding: 0 0 5px;
+  margin-bottom: 3px;
+  font-size: 15px;
 }
 
 .tipo-fogo {
-    background-color: #fd7d24;
-  }
-  
-  .tipo-venenoso {
-    background-color: #b97fc9;
-  }
-  
-  .tipo-agua {
-    background-color: #4592c4;
-  }
-  
-  .tipo-planta {
-    background-color: #9bcc50;
-  }
-  
-  .tipo-fantasma {
-    background-color: #7b62a3;
-  }
-  
-  .tipo-voador {
-    background-color: #3dc7ef;
-  }
-  
-  .tipo-inseto {
-    background-color: #d0c240f4;
-  }
-  
-  .tipo-terra{
-    background-color: #f7de3f;
-  }
-  
-  .tipo-eletrico{
-    background-color: #eed535;
-  }
-  
-  .tipo-fada{
-    background-color: #fdb9e9;
-  }
-  
-  .tipo-pedra{
-    background-color: #a38c21;
-  }
-  
-  .tipo-normal{
-    background-color: #a4acaf;
-  }
-  
-  .tipo-lutador{
-    background-color: #d56723;
-  }
-  
-  .tipo-psiquico{
-    background-color: #f366b9;
-  }
-  
-  .tipo-gelo{
-    background-color: #51c4e7;
-  }
-  
-  .tipo-agua-lutador{
-    background: linear-gradient(
-      90deg,
-      #4592c4 25%,
-      #d56723 60%
-    );
-  }
-  
-  .tipo-agua-veneno{
-    background: linear-gradient(
-      90deg,
-      #4592c4 25%,
-      #b97fc9 60%
-    );
-  }
-  
-  .tipo-normal-fada{
-    background: linear-gradient(
-      90deg,
-      #a4acaf 25%,
-      #fdb9e9 60%
-    );
-  }
-  
-  .tipo-inseto-planta{
-    background: linear-gradient(
-      90deg,
-      #d0c240f4 25%,
-      #9bcc50 80%
-    );
-  }
-  
-  .tipo-planta-veneno {
-    background: linear-gradient(
-      90deg,
-      #9bcc50 35%,
-      #b97fc9 100%
-    );
-  }
-  
-  .tipo-veneno-terra{
-    background: linear-gradient(
-      100deg,
-      #b97fc9 25%,
-      #f7de3f 60%
-    );
-  }
-  .tipo-voador-fire {
-    background: linear-gradient(
-      90deg,
-      #3dc7ef 35%,
-      #fd7d24 100%
-    );
-  }
-  
-  .tipo-veneno-voador{
-    background: linear-gradient(
-      90deg,
-      #b97fc9 22%,
-      #3dc7ef 100%
-    );
-  }
-  
-  .tipo-inseto-veneno {
-    background: linear-gradient(
-      90deg,
-      #d0c240f4 15%,
-      #b97fc9 100%
-    );
-  }
-  
-  .tipo-inseto-voador {
-    background: linear-gradient(
-      90deg,
-      #d0c240f4 35%,
-      #bb8e07f4 100%
-    );
-  }
-  
-  .tipo-normal-voador {
-    background: linear-gradient(
-      90deg,
-      #a4acaf 35%,
-      #3dc7ef 83%
-    );
-  }
-  
+  background-color: #fd7d24;
+}
 
+.tipo-venenoso {
+  background-color: #b97fc9;
+}
+
+.tipo-agua {
+  background-color: #4592c4;
+}
+
+.tipo-planta {
+  background-color: #9bcc50;
+}
+
+.tipo-fantasma {
+  background-color: #7b62a3;
+}
+
+.tipo-voador {
+  background-color: #3dc7ef;
+}
+
+.tipo-inseto {
+  background-color: #d0c240f4;
+}
+
+.tipo-terra {
+  background-color: #f7de3f;
+}
+
+.tipo-eletrico {
+  background-color: #eed535;
+}
+
+.tipo-fada {
+  background-color: #fdb9e9;
+}
+
+.tipo-pedra {
+  background-color: #a38c21;
+}
+
+.tipo-normal {
+  background-color: #a4acaf;
+}
+
+.tipo-lutador {
+  background-color: #d56723;
+}
+
+.tipo-psiquico {
+  background-color: #f366b9;
+}
+
+.tipo-gelo {
+  background-color: #51c4e7;
+}
+
+.tipo-agua-lutador {
+  background: linear-gradient(90deg, #4592c4 25%, #d56723 60%);
+}
+
+.tipo-agua-veneno {
+  background: linear-gradient(90deg, #4592c4 25%, #b97fc9 60%);
+}
+
+.tipo-normal-fada {
+  background: linear-gradient(90deg, #a4acaf 25%, #fdb9e9 60%);
+}
+
+.tipo-inseto-planta {
+  background: linear-gradient(90deg, #d0c240f4 25%, #9bcc50 80%);
+}
+
+.tipo-planta-veneno {
+  background: linear-gradient(90deg, #9bcc50 35%, #b97fc9 100%);
+}
+
+.tipo-veneno-terra {
+  background: linear-gradient(100deg, #b97fc9 25%, #f7de3f 60%);
+}
+.tipo-voador-fire {
+  background: linear-gradient(90deg, #3dc7ef 35%, #fd7d24 100%);
+}
+
+.tipo-veneno-voador {
+  background: linear-gradient(90deg, #b97fc9 22%, #3dc7ef 100%);
+}
+
+.tipo-inseto-veneno {
+  background: linear-gradient(90deg, #d0c240f4 15%, #b97fc9 100%);
+}
+
+.tipo-inseto-voador {
+  background: linear-gradient(90deg, #d0c240f4 35%, #bb8e07f4 100%);
+}
+
+.tipo-normal-voador {
+  background: linear-gradient(90deg, #a4acaf 35%, #3dc7ef 83%);
+}
