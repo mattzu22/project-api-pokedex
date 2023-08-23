@@ -54,7 +54,7 @@ getDetailsPokemon(getUrlFlagName);
 
 function renderPokemon(detailPokemon) {
   console.log(detailPokemon);
-  detailPokemon.map((detail, index) => {
+  detailPokemon.map((detail) => {
     containerDetailsPokemon.innerHTML += `
   <div class="detail-pokemon">
     <div class="info-right ${detail.types.join("-")} cartao-pokemon">
@@ -77,18 +77,18 @@ function renderPokemon(detailPokemon) {
             
         <div class="poke-details">
           <nav class="navegation">
-            <ul>
-              <li class="selecionado" id=${index}>Status</li>
-              <li id=${index}>Habilidades</li>
-              <li id=${index}>Moves</li>
+            <ul class="menu">
+              <li class="selecionado" id="0">Status</li>
+              <li id="1">Moves</li>
+              <li id="2">Abilities</li>
             </ul>
           </nav>
 
           <div class="info">    
-            <div class="status" id="status-0">
+            <div class="status info-poke aberto" id="info-0">
               <h3>Status</h3>
 
-              <ul>
+              <ul class="info-status">
                 ${detail.stats
                   .map((stat) => {
                     return `<li>${stat.nameStats}: ${stat.baseStats}</li>`;
@@ -98,7 +98,7 @@ function renderPokemon(detailPokemon) {
             </div>
           
 
-            <div class="moves" id="moves-1">
+            <div class="moves info-poke" id="info-1">
                 <h3>Moves</h3>
 
                 <ul>
@@ -112,13 +112,13 @@ function renderPokemon(detailPokemon) {
                 </ul>
             </div>
 
-            <div class="abilities" id="abilities-2">
+            <div class="abilities info-poke" id="info-2">
                 <h3>Abilities</h3>
 
                 <ul>  
                   ${detail.abilities.map( result =>{
                     return `
-                      <li>${result.nameAbility}: ${result.effects[0].effect}</li>
+                      <li><span>${result.nameAbility}</span>: ${result.effects[0].effect}</li>
                     `
                   }).join("")}.
                 </ul>
@@ -138,6 +138,31 @@ function renderPokemon(detailPokemon) {
   // });
 
   showColorPokemon();
+  showNavInfoPoke()
+};
+
+function showNavInfoPoke(){
+  const menu = document.querySelectorAll(".menu li");
+
+  menu.forEach(val => {
+    val.addEventListener("click", ()=>{
+      const infoAberto = document.querySelector(".aberto");
+      infoAberto.classList.remove("aberto")
+      
+      const idMenu = val.id;
+      const idList = document.getElementById(`info-${idMenu}`);
+      idList.classList.add("aberto") 
+      
+      const selecionado = document.querySelector(".selecionado");
+      selecionado.classList.remove("selecionado");
+      
+      val.classList.add("selecionado");
+
+      const menuSelecionado = document.getElementById(idMenu);
+      menuSelecionado.classList.add("selecionado")
+
+    })
+  });
 }
 
 async function changerPokemonShiny(btn) {

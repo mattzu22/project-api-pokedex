@@ -27,7 +27,7 @@ body {
 }
 
 .detail-pokemon .info-right {
-  border-radius: 20px;
+  border-radius: 25px;
   width: 430px;
 }
 
@@ -93,37 +93,148 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .navegation ul{
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .navegation
+  ul {
   display: flex;
   justify-content: space-around;
   padding: 10px;
-  border-radius: 10px;
-  background-color: rgb(237, 177, 177);
-  width: 100%;
+  padding-bottom: 20px;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .navegation ul li.selecionado{
-  background-color: rgb(135, 139, 239);
-  padding: 2px 7px;
-  border-radius: 5px;
-  color: white;
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .navegation
+  ul
+  li {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .navegation
+  ul
+  li.selecionado {
+  opacity: 1;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(86, 86, 245);
+  animation: changer-menu 0.5s ease-in-out;
+}
+
+@keyframes changer-menu {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .detail-pokemon .info-right .container-poke-details .poke-details {
   background-color: #ffffffc9;
   opacity: 0.8;
-  border-radius: 25px;
+  border-radius: 40px 30px 30px 40px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .detail-pokemon .info-right .container-poke-details .poke-details .info {
   display: flex;
   justify-content: space-between;
-  padding: 0 30px 20px;
+  padding: 0 45px 20px;
+  height: 250px;
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .abilities
+  ul {
+  border-bottom: 1px solid #c3c4c5;
+  padding: 0 0 5px;
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .info-poke {
+  display: none;
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .info-poke.aberto {
+  display: block;
+  animation: changer-info 0.5s ease-in-out;
+}
+
+@keyframes changer-info {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .abilities ul {
+    height: 180px;
+    overflow-y: scroll;
+}
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .abilities ul::-webkit-scrollbar {
+  width: 5px;              
+}
+
+
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .abilities ul::-webkit-scrollbar-thumb {
+  background-color: blue; 
+  border-radius: 10px; 
+  width: 5px; 
 }
 
 .detail-pokemon .info-right .container-poke-details .poke-details .moves h3,
-.detail-pokemon .info-right .container-poke-details .poke-details .status h3 {
+.detail-pokemon .info-right .container-poke-details .poke-details .status h3,
+.detail-pokemon
+  .info-right
+  .container-poke-details
+  .poke-details
+  .info
+  .abilities
+  h3 {
   font-size: 23px;
   margin-bottom: 10px;
   border-bottom: 1px solid #6b727a;
@@ -133,14 +244,21 @@ body {
   .info-right
   .container-poke-details
   .poke-details
-  .moves
+  .abilities
   ul
-  li,
+  li
+  span {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.detail-pokemon .info-right .container-poke-details .poke-details .moves ul li,
+.detail-pokemon .info-right .container-poke-details .poke-details .status ul li,
 .detail-pokemon
   .info-right
   .container-poke-details
   .poke-details
-  .status
+  .abilities
   ul
   li {
   border-bottom: 1px solid #c3c4c5;
