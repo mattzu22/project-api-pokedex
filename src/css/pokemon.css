@@ -27,7 +27,7 @@ body {
 }
 
 .detail-pokemon .info-right {
-  border-radius: 25px;
+  border-radius: 20px;
   width: 430px;
 }
 
@@ -142,7 +142,7 @@ body {
 .detail-pokemon .info-right .container-poke-details .poke-details {
   background-color: #ffffffc9;
   opacity: 0.8;
-  border-radius: 40px 30px 30px 40px;
+  border-radius: 50px 50px 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -200,9 +200,10 @@ body {
   .container-poke-details
   .poke-details
   .info
-  .abilities ul {
-    height: 180px;
-    overflow-y: scroll;
+  .abilities
+  ul {
+  height: 180px;
+  overflow-y: scroll;
 }
 
 .detail-pokemon
@@ -210,20 +211,21 @@ body {
   .container-poke-details
   .poke-details
   .info
-  .abilities ul::-webkit-scrollbar {
-  width: 5px;              
+  .abilities
+  ul::-webkit-scrollbar {
+  width: 5px;
 }
-
 
 .detail-pokemon
   .info-right
   .container-poke-details
   .poke-details
   .info
-  .abilities ul::-webkit-scrollbar-thumb {
-  background-color: blue; 
-  border-radius: 10px; 
-  width: 5px; 
+  .abilities
+  ul::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 10px;
+  width: 5px;
 }
 
 .detail-pokemon .info-right .container-poke-details .poke-details .moves h3,
