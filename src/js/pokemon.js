@@ -1,19 +1,14 @@
 import { screenPokemon } from "./objects/screen-pokemon.js";
+import { getDataPokemon } from "./services/getDataPokemon.js";
 
 const urlParams = window.location.search;
 const params = new URLSearchParams(urlParams);
 const getUrlFlagName = params.get("name");
 let detailPokemon = [];
 
-async function getDataPokemon(pokemom) {
-  const url = `https://pokeapi.co/api/v2/pokemon/${pokemom}`;
-  const response = await fetch(url);
-  return await response.json();
-}
-
-async function getInfoPokemon() {
+async function fillInfoPokemon() {
   const pokemonDetails = await getDataPokemon(getUrlFlagName)
-
+ 
   const infoStats = pokemonDetails.stats.map((stat) => {
     const nameStats = stat.stat.name;
     const baseStats = stat.base_stat;
@@ -54,7 +49,7 @@ async function getInfoPokemon() {
   });
 }
 
-getInfoPokemon()
+fillInfoPokemon()
 
 export async function changerPokemonShiny(btn) {
   const pokemon = await getDataPokemon(getUrlFlagName);

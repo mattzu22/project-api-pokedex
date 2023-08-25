@@ -10,7 +10,8 @@ export default async function fillPokemonsDetails(pokemonData) {
     detailsPokemon.push({
       name: pokemon.name,
       image: pokemon.sprites.front_default,
-      id: pokemon.id,
       types: types,
     });
+
+    console.log(detailsPokemon);
   }

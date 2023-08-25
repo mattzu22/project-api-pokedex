@@ -23,8 +23,8 @@ async function pokeDetails() {
 
   screenPokemons.renderPokemons(detailsPokemon);
 }
-pokeDetails();
 
+pokeDetails();
 
 loadPokemons.addEventListener("click", () => {
   loadPokemons.classList.add("button--loading");
