@@ -1,12 +1,17 @@
 body {
-  background: url(../image/pokemon.png) center center no-repeat;
+  background:url(../image/bg-pokemon.jpg) center center fixed no-repeat;
   background-size: cover;
-  min-height: 100vh;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+body.selecionado{
+  background:  linear-gradient(rgba(0, 0, 0, 0.773), rgba(0, 0, 0, 0.592)) ,url(../image/bg-pokemon.jpg) center center fixed no-repeat;
+  background-size: cover;
 }
 
 .detail-pokemon {

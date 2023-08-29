@@ -1,6 +1,7 @@
 import showColorPokemon from "../functions/showColorPokemons.js";
 import { showNavInfoPoke } from "../functions/showNavInfoPoke.js";
 import { changerPokemonShiny } from "../pokemon.js";
+import { darkModePokemon } from "../pokemon.js";
 
 export const screenPokemon = {
   pokemonData: document.querySelector(".container-pokemons"),
@@ -96,5 +97,6 @@ export const screenPokemon = {
 
     showColorPokemon();
     showNavInfoPoke();
+    darkModePokemon();
   },
 };

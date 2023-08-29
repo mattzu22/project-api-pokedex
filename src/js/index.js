@@ -24,6 +24,74 @@ async function pokeDetails() {
   screenPokemons.renderPokemons(detailsPokemon);
 }
 
+const theme = {
+  light: {
+    backgroundBase: "#f9f9f9",
+    backgroundLevel1: "#DCDCDC",
+    backgroundLevel2: "#f0f0f0",
+    borderBase: "#e5e5e5",
+    textColorBase: "#222222",
+  },
+  dark: {
+    backgroundBase: "#181818",
+    backgroundLevel1: "#202020",
+    backgroundLevel2: "#313131",
+    borderBase: "#383838",
+    textColorBase: "#FFFFFF",
+  },
+};
+
+export function darkMode() {
+  const body = document.querySelector("body");
+  const searchPokemon = document.querySelector("#search-pokemon");
+  const btnSearch = document.querySelector("#search");
+  const divDetalhes = document.querySelectorAll(".detalhes");
+  const checkbox = document.getElementById("checkbox");
+  const types = document.querySelectorAll(".tipo");
+  const bgPokebola = document.querySelectorAll(".cartao-imagem");
+
+  // Função para definir o modo dark mode
+  const setDarkMode = (darkMode) => {
+    localStorage.setItem("darkMode", darkMode);
+  };
+
+  // Função para aplicar o modo dark mode
+  const applyDarkMode = () => {
+    const darkMode = localStorage.getItem("darkMode") === "true";
+    
+    searchPokemon.style.backgroundColor = darkMode ? theme.dark.backgroundLevel2 : "";
+    searchPokemon.style.color = darkMode ? theme.dark.textColorBase : "";
+    btnSearch.style.backgroundColor = darkMode ? theme.dark.backgroundLevel2 : "";
+
+    divDetalhes.forEach((detalhe) => {
+      detalhe.style.backgroundColor = darkMode ? theme.dark.backgroundLevel2 : "";
+      detalhe.style.color = darkMode ? theme.dark.textColorBase : "";
+    });
+
+    bgPokebola.forEach((pokebola) => {
+      const filterValue = darkMode ? "invert(0)" : "invert(100%)";
+      pokebola.style.setProperty("--pokebola-filter", filterValue);
+    });
+
+    types.forEach((type) => {
+      type.style.color = darkMode ? theme.dark.backgroundBase : "";
+    });
+
+    body.classList.toggle("selecionado", darkMode);
+    checkbox.checked = darkMode;
+  };
+
+  // Chama a função para aplicar o modo dark mode quando a página é carregada
+  applyDarkMode();
+
+  checkbox.addEventListener("change", () => {
+    const currentDarkMode = checkbox.checked;
+    setDarkMode(currentDarkMode);
+    applyDarkMode();
+  });
+}
+
+
 pokeDetails();
 
 loadPokemons.addEventListener("click", () => {
@@ -36,3 +104,50 @@ loadPokemons.addEventListener("click", () => {
 });
 
 buttonSearch.addEventListener("click", updateFilteredPokemon);
+
+
+// export function darkMode(){
+//   const body =  document.querySelector("body");
+//   const searchPokemon = document.querySelector("#search-pokemon");
+//   const btnSearch = document.querySelector("#search")
+//   const divDetalhes = document.querySelectorAll(".detalhes")
+//   const checkbox = document.getElementById("checkbox")
+//   const types = document.querySelectorAll(".tipo")
+//   const bgPokebola = document.querySelectorAll(".cartao-imagem");
+
+//   checkbox.addEventListener("change", () => {
+//     if (checkbox.checked) {
+//       searchPokemon.style.backgroundColor = theme.dark.backgroundLevel2
+//       searchPokemon.style.color = theme.dark.textColorBase
+//       btnSearch.style.backgroundColor = theme.dark.backgroundLevel2
+//       divDetalhes.forEach(detalhe =>{
+//         detalhe.style.backgroundColor = theme.dark.backgroundLevel2
+//         detalhe.style.color = theme.dark.textColorBase
+//       })
+//       types.forEach(type => {
+//         type.style.color = theme.dark.backgroundBase
+//       });
+//     }else{
+//       searchPokemon.style.backgroundColor = "";
+//       searchPokemon.style.color = "";
+//       btnSearch.style.backgroundColor = "";
+//       divDetalhes.forEach(detalhe =>{
+//         detalhe.style.backgroundColor = "";
+//         detalhe.style.color = "";
+//       })
+//       types.forEach(type => {
+//         type.style.color = "";
+//       });
+//     }
+  
+
+  
+//     const bodySelecionado = document.querySelector("body.selecionado")
+//     body.classList.add("selecionado")
+//     if (bodySelecionado) {
+//       body.classList.remove("selecionado")
+//     }
+  
+//   })
+// }
+

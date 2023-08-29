@@ -7,8 +7,8 @@ const getUrlFlagName = params.get("name");
 let detailPokemon = [];
 
 async function fillInfoPokemon() {
-  const pokemonDetails = await getDataPokemon(getUrlFlagName)
- 
+  const pokemonDetails = await getDataPokemon(getUrlFlagName);
+
   const infoStats = pokemonDetails.stats.map((stat) => {
     const nameStats = stat.stat.name;
     const baseStats = stat.base_stat;
@@ -45,32 +45,99 @@ async function fillInfoPokemon() {
       abilities: abilityResults,
     });
 
-    screenPokemon.renderPokemon(detailPokemon)
+    screenPokemon.renderPokemon(detailPokemon);
   });
 }
-
-fillInfoPokemon()
 
 export async function changerPokemonShiny(btn) {
   const pokemon = await getDataPokemon(getUrlFlagName);
   const imgPokemon = document.querySelector(".img-pokemon");
-  const shinyPokemon = pokemon.sprites.front_shiny;
-  const normalPokemon = pokemon.sprites.front_default;
+  const { front_shiny: shinyPokemon, front_default: normalPokemon } =
+    pokemon.sprites;
   const urlImgAtual = imgPokemon.getAttribute("src");
 
+  const setAttributesAndAnimate = (newSrc, backgroundColor) => {
+    imgPokemon.style.opacity = 0;
+    btn.style.backgroundColor = backgroundColor;
+    setTimeout(() => {
+      imgPokemon.setAttribute("src", newSrc);
+      imgPokemon.style.opacity = 1;
+    }, 500);
+  };
+
   if (urlImgAtual === normalPokemon) {
-    imgPokemon.style.opacity = 0;
-    btn.style.backgroundColor = "green";
-    setTimeout(() => {
-      imgPokemon.setAttribute("src", shinyPokemon);
-      imgPokemon.style.opacity = 1;
-    }, 200);
+    setAttributesAndAnimate(shinyPokemon, "green");
   } else {
-    imgPokemon.style.opacity = 0;
-    btn.style.backgroundColor = "red";
-    setTimeout(() => {
-      imgPokemon.setAttribute("src", normalPokemon);
-      imgPokemon.style.opacity = 1;
-    }, 200);
+    setAttributesAndAnimate(normalPokemon, "red");
   }
 }
+
+const theme = {
+  light: {
+    backgroundBase: "#f9f9f9",
+    backgroundLevel1: "#DCDCDC",
+    backgroundLevel2: "#f0f0f0",
+    borderBase: "#e5e5e5",
+    textColorBase: "#222222",
+  },
+  dark: {
+    backgroundBase: "#181818",
+    backgroundLevel1: "#202020",
+    backgroundLevel2: "#313131",
+    borderBase: "#383838",
+    textColorBase: "#FFFFFF",
+  },
+};
+
+export function darkModePokemon() {
+  const body = document.querySelector("body");
+  const name = document.querySelector(".name");
+  const number = document.querySelector(".number");
+  const tipos = document.querySelectorAll(".tipo");
+  const divDetails = document.querySelector(".poke-details");
+  const navegation = document.querySelectorAll(".navegation ul li");
+  const info = document.querySelector(".info");
+  const liSelecionada = document.querySelector(".navegation ul li.selecionado");
+
+  // Função para definir o modo dark mode
+  const setDarkMode = (darkMode) => {
+    localStorage.setItem("darkMode", darkMode);
+  };
+
+  // Função para aplicar o modo dark mode
+  const applyDarkMode = () => {
+    const darkMode = localStorage.getItem("darkMode") === "true";
+
+    name.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
+    number.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
+    info.style.color = darkMode ? theme.dark.textColorBase : "";
+
+    liSelecionada.style.color = darkMode ? theme.dark.textColorBase : "";
+
+    tipos.forEach((tipo) => {
+      tipo.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
+    });
+
+    navegation.forEach((menu) => {
+      menu.style.color = darkMode ? theme.dark.textColorBase : "";
+    });
+
+    divDetails.style.backgroundColor = darkMode
+      ? theme.dark.backgroundLevel1
+      : "";
+
+    body.classList.toggle("selecionado", darkMode);
+    checkbox.checked = darkMode;
+  };
+
+  // Chama a função para aplicar o modo dark mode quando a página é carregada
+  applyDarkMode();
+
+  checkbox.addEventListener("change", () => {
+    const currentDarkMode = checkbox.checked;
+    setDarkMode(currentDarkMode);
+    applyDarkMode();
+  });
+}
+
+fillInfoPokemon();

@@ -1,4 +1,5 @@
 import showColorPokemon from "../functions/showColorPokemons.js";
+import { darkMode } from "../index.js";
 
 export const screenPokemons = {
   PokemonsData: document.querySelector(".cards-pokemons"),
@@ -28,5 +29,6 @@ export const screenPokemons = {
     this.PokemonsData.innerHTML += pokemons;
 
     showColorPokemon();
+    darkMode();
   },
 };

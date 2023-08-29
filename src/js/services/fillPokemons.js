@@ -12,6 +12,4 @@ export default async function fillPokemonsDetails(pokemonData) {
       image: pokemon.sprites.front_default,
       types: types,
     });
-
-    console.log(detailsPokemon);
   }

@@ -1,12 +1,17 @@
 body {
-  background: url(../image/pokemon.png) center center fixed no-repeat;
+  background:url(../image/bg-pokemon.jpg) center center fixed no-repeat;
   background-size: cover;
-  min-height: 100vh;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+body.selecionado{
+  background:  linear-gradient(rgba(0, 0, 0, 0.773), rgba(0, 0, 0, 0.592)) ,url(../image/bg-pokemon.jpg) center center fixed no-repeat;
+  background-size: cover;
 }
 
 .header {
@@ -71,20 +76,8 @@ body {
   max-width: 100%;
   position: relative;
   overflow: hidden;
+  border: 2px solid black;
 }
-
-/* .cartao-pokemon:before{
-  content: "";
-  background: url(../image/cinema.png) center center no-repeat;
-  filter: invert(100%);
-  display: block;
-  width: 130%;
-  height: 130%;
-  background-size: cover;
-  opacity: 0.4;
-  position: absolute;
-  top: -50px;
-} */
 
 .cartao-pokemon:hover {
   transform: scale(1.1);
@@ -139,13 +132,13 @@ body {
 
 .cartao-pokemon .cartao-imagem:before {
   content: "";
-  background: url(../image/cinema.png) center center no-repeat;
-  /* filter: invert(100%); */
+  background: url(../image/pokebola.webp) center center no-repeat;
+  filter: var(--pokebola-filter, none);
   display: block;
-  width: 100%;
+  width: 160%;
   height: 100%;
   background-size: cover;
-  opacity: 0.4;
+  opacity: 0.7;
   position: absolute;
   top: -50px;
 }
