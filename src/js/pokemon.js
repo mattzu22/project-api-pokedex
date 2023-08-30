@@ -62,7 +62,7 @@ export async function changerPokemonShiny(btn) {
     setTimeout(() => {
       imgPokemon.setAttribute("src", newSrc);
       imgPokemon.style.opacity = 1;
-    }, 500);
+    }, 1000);
   };
 
   if (urlImgAtual === normalPokemon) {
@@ -89,7 +89,7 @@ const theme = {
   },
 };
 
-export function darkModePokemon() {
+export function darkMode() {
   const body = document.querySelector("body");
   const name = document.querySelector(".name");
   const number = document.querySelector(".number");
@@ -110,13 +110,13 @@ export function darkModePokemon() {
 
     name.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
     number.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
-    info.style.color = darkMode ? theme.dark.textColorBase : "";
-
-    liSelecionada.style.color = darkMode ? theme.dark.textColorBase : "";
-
     tipos.forEach((tipo) => {
       tipo.style.color = darkMode ? theme.dark.backgroundLevel2 : "";
     });
+    
+    liSelecionada.style.color = darkMode ? theme.dark.textColorBase : "";
+    info.style.color = darkMode ? theme.dark.textColorBase : "";
+
 
     navegation.forEach((menu) => {
       menu.style.color = darkMode ? theme.dark.textColorBase : "";
@@ -126,7 +126,7 @@ export function darkModePokemon() {
       ? theme.dark.backgroundLevel1
       : "";
 
-    body.classList.toggle("selecionado", darkMode);
+    body.classList.toggle("selecionada", darkMode);
     checkbox.checked = darkMode;
   };
 
