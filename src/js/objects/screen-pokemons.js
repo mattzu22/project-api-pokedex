@@ -24,7 +24,7 @@ export const screenPokemons = {
         </div>
       </div>
         `
-    );
+    ).join("");
     this.PokemonsData.innerHTML = "";
     this.PokemonsData.innerHTML += pokemons;
 

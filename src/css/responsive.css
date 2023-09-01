@@ -1,0 +1,105 @@
+@media (max-width: 1490px) {
+  .dark-mode {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+
+  .header {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 950px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header .search {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 40px 20px;
+  }
+
+  .header .logo {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 450px) {
+  .card-pokemon .container-card-pokemon .info-pokemon-top .name-type .name {
+    font-size: 25px;
+  }
+
+  .card-pokemon
+    .container-card-pokemon
+    .info-pokemon-top
+    .name-type
+    .types
+    .type {
+    font-size: 11px;
+  }
+
+  .card-pokemon .container-card-pokemon .info-pokemon-top .number {
+    font-size: 15px;
+  }
+
+  .card-pokemon .info-bottom .img-pokemon {
+    height: 200px;
+  }
+
+  .card-pokemon
+    .container-card-pokemon
+    .info-bottom
+    .poke-details
+    .info
+    .abilities
+    ul {
+    font-size: 15px;
+  }
+
+  .card-pokemon .container-card-pokemon .info-bottom .poke-details .moves h3,
+  .card-pokemon .container-card-pokemon .info-bottom .poke-details .status h3,
+  .card-pokemon
+    .container-card-pokemon
+    .info-bottom
+    .poke-details
+    .info
+    .abilities
+    h3 {
+    font-size: 20px;
+  }
+
+  .card-pokemon .container-card-pokemon .info-bottom .poke-details .moves ul li,
+  .card-pokemon
+    .container-card-pokemon
+    .info-bottom
+    .poke-details
+    .status
+    ul
+    li,
+  .card-pokemon
+    .container-card-pokemon
+    .info-bottom
+    .poke-details
+    .abilities
+    ul
+    li {
+    font-size: 13px;
+  }
+
+  .card-pokemon .container-card-pokemon .info-bottom .poke-details .info {
+    height: 230px;
+    padding: 0 38px 20px;
+  }
+
+  .card-pokemon .container-card-pokemon .info-pokemon-top .btn-shiny {
+    width: 25px;
+    height: 25px;
+  }
+}

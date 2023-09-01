@@ -1,5 +1,5 @@
 body {
-  background:url(../image/bg-pokemon.jpg) center center fixed no-repeat;
+  background: url(../image/bg-pokemon.jpg) center center fixed no-repeat;
   background-size: cover;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
@@ -9,15 +9,16 @@ body {
   flex-direction: column;
 }
 
-body.selecionada{
-  background:  linear-gradient(rgba(0, 0, 0, 0.773), rgba(0, 0, 0, 0.592)) ,url(../image/bg-pokemon.jpg) center center fixed no-repeat;
+body.selecionada {
+  background: linear-gradient(rgba(0, 0, 0, 0.773), rgba(0, 0, 0, 0.592)),
+    url(../image/bg-pokemon.jpg) center center fixed no-repeat;
   background-size: cover;
 }
 
-.detail-pokemon {
-  max-width: 700px;
+.card-pokemon {
+  max-width: 430px;
   width: 100%;
-  justify-content: space-between;
+  padding: 80px 15px;
   animation: changer-shiny 1s ease-in-out;
 }
 
@@ -31,28 +32,37 @@ body.selecionada{
   }
 }
 
-.detail-pokemon .info-right {
+.card-pokemon .container-card-pokemon {
   border-radius: 20px;
-  width: 430px;
+  width: 100%;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .name {
+.card-pokemon .container-card-pokemon .info-pokemon-top .name-type .name {
   margin-bottom: 5px;
   font-size: 30px;
   font-weight: 800;
   color: white;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .name::first-letter {
+.card-pokemon
+  .container-card-pokemon
+  .info-pokemon-top
+  .name-type
+  .name::first-letter {
   text-transform: uppercase;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .types {
+.card-pokemon .container-card-pokemon .info-pokemon-top .name-type .types {
   display: flex;
   gap: 5px;
 }
 
-.detail-pokemon .info-right .info-pokemon .name-type .types .type {
+.card-pokemon
+  .container-card-pokemon
+  .info-pokemon-top
+  .name-type
+  .types
+  .type {
   font-size: 13px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 6px;
@@ -61,14 +71,14 @@ body.selecionada{
   opacity: 0.8;
 }
 
-.detail-pokemon .info-right .info-pokemon .number {
+.card-pokemon .container-card-pokemon .info-pokemon-top .number {
   font-size: 17px;
   font-weight: 800;
   margin-top: 12px;
   color: white;
 }
 
-.detail-pokemon .info-right .info-pokemon .btn-shiny {
+.card-pokemon .container-card-pokemon .info-pokemon-top .btn-shiny {
   position: absolute;
   right: 40px;
   top: 70px;
@@ -83,7 +93,7 @@ body.selecionada{
   transition: 0.2s ease-in-out;
 }
 
-.detail-pokemon .info-pokemon {
+.card-pokemon .info-pokemon-top {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -91,16 +101,22 @@ body.selecionada{
   position: relative;
 }
 
-.detail-pokemon .container-poke-details .img-pokemon {
+.card-pokemon .info-bottom .img-pokemon {
   width: 100%;
+  margin: 0 auto;
   height: 250px;
   object-fit: contain;
+  padding: 0 15px;
   transition: 0.4s ease;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon .info-bottom .img-pokemon img {
+  width: 100%;
+}
+
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .navegation
   ul {
@@ -110,20 +126,21 @@ body.selecionada{
   padding-bottom: 20px;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .navegation
   ul
   li {
   cursor: pointer;
   opacity: 0.5;
+  font-size: 14px;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .navegation
   ul
@@ -144,45 +161,44 @@ body.selecionada{
   }
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details {
+.card-pokemon .container-card-pokemon .info-bottom .poke-details {
   background-color: #ffffffc9;
   opacity: 0.8;
   border-radius: 50px 50px 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .info {
+.card-pokemon .container-card-pokemon .info-bottom .poke-details .info {
   display: flex;
   justify-content: space-between;
   padding: 0 45px 20px;
   height: 250px;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .abilities
   ul {
-  border-bottom: 1px solid #c3c4c5;
   padding: 0 0 5px;
   margin-bottom: 3px;
   font-size: 15px;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .info-poke {
   display: none;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .info-poke.aberto {
@@ -200,9 +216,9 @@ body.selecionada{
   }
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .abilities
@@ -211,9 +227,9 @@ body.selecionada{
   overflow-y: scroll;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .abilities
@@ -221,9 +237,9 @@ body.selecionada{
   width: 5px;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .abilities
@@ -233,11 +249,11 @@ body.selecionada{
   width: 5px;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .moves h3,
-.detail-pokemon .info-right .container-poke-details .poke-details .status h3,
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon .container-card-pokemon .info-bottom .poke-details .moves h3,
+.card-pokemon .container-card-pokemon .info-bottom .poke-details .status h3,
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .info
   .abilities
@@ -247,9 +263,9 @@ body.selecionada{
   border-bottom: 1px solid #6b727a;
 }
 
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .abilities
   ul
@@ -259,11 +275,11 @@ body.selecionada{
   font-size: 16px;
 }
 
-.detail-pokemon .info-right .container-poke-details .poke-details .moves ul li,
-.detail-pokemon .info-right .container-poke-details .poke-details .status ul li,
-.detail-pokemon
-  .info-right
-  .container-poke-details
+.card-pokemon .container-card-pokemon .info-bottom .poke-details .moves ul li,
+.card-pokemon .container-card-pokemon .info-bottom .poke-details .status ul li,
+.card-pokemon
+  .container-card-pokemon
+  .info-bottom
   .poke-details
   .abilities
   ul

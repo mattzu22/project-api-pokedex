@@ -15,19 +15,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/css/dark-mode.css" />
+    <link rel="stylesheet" href="./src/css/responsive.css">
   </head>
   <body>
     <div class="dark-mode">
       <input type="checkbox" class="checkbox" id="checkbox" />
       <label for="checkbox" class="checkbox-label">
-        <i class="fa-light fa-moon"></i>
-        <i class="fas fa-sun"></i>
+        <i class="fa-regular fa-moon"></i>
+        <i class="fa-regular fa-sun"></i>
         <span class="ball"></span>
       </label>
     </div>
 
     <header class="header">
-      <img src="./src/image/pokedex-3d-logo.png" alt="pokedex" />
+      <img class="logo" src="./src/image/pokedex-3d-logo.png" alt="pokedex" />
       <div class="search">
         <input
           type="search"
@@ -39,12 +40,14 @@
       </div>
     </header>
 
-    <div class="cards-pokemons"></div>
-
+    <div class="cards-pokemons">
+    </div>
+    
     <button type="button" class="button" id="btn">
       <span class="button__text">Carregar Mais</span>
     </button>
 
     <script src="./src/js/index.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/2f070f5c75.js" crossorigin="anonymous"></script>
   </body>
 </html>

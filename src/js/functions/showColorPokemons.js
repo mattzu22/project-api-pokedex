@@ -15,6 +15,8 @@ function showColorPokemon() {
       fairy: "tipo-fada",
       fighting: "tipo-lutador",
       psychic: "tipo-psiquico",
+      ice: "tipo-gelo",
+      steel: "tipo-metal",
       "water-poison": "tipo-agua-veneno",
       "water-fighting": "tipo-agua-lutador",
       "normal-fairy": "tipo-normal-fada",
@@ -26,6 +28,13 @@ function showColorPokemon() {
       "normal-flying": "tipo-normal-voador",
       "bug-poison": "tipo-inseto-veneno",
       "bug-grass": "tipo-inseto-planta",
+      "water-psychic": "tipo-agua-psiquico",
+      "rock-ground":"tipo-pedra-terra",
+      "electric-steel": "tipo-eletrico-metal",
+      "ghost-poison": "tipo-fanstasma-venenoso",
+      "grass-psychic": "tipo-planta-psiquico",
+      "ice-psychic": "tipo-gelo-psiquico",
+      "water-flying": "tipo-agua-voador",
     };
     
     typesPokemon.forEach((element) => {

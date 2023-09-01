@@ -11,6 +11,14 @@ import fetchMorePokemons from "./services/morePokemons.js";
 
 let offset = 0;
 
+document.getElementById("search-pokemon").addEventListener("keyup", (e) =>{
+  const key = e.which || e.keyCode
+  const enterKeyPressed = key === 13;
+  if (enterKeyPressed) {
+    updateFilteredPokemon()
+  }
+})
+
 async function pokeDetails() {
   const data = await fetchPokemons(offset);
   const { results } = data;
@@ -104,50 +112,3 @@ loadPokemons.addEventListener("click", () => {
 });
 
 buttonSearch.addEventListener("click", updateFilteredPokemon);
-
-
-// export function darkMode(){
-//   const body =  document.querySelector("body");
-//   const searchPokemon = document.querySelector("#search-pokemon");
-//   const btnSearch = document.querySelector("#search")
-//   const divDetalhes = document.querySelectorAll(".detalhes")
-//   const checkbox = document.getElementById("checkbox")
-//   const types = document.querySelectorAll(".tipo")
-//   const bgPokebola = document.querySelectorAll(".cartao-imagem");
-
-//   checkbox.addEventListener("change", () => {
-//     if (checkbox.checked) {
-//       searchPokemon.style.backgroundColor = theme.dark.backgroundLevel2
-//       searchPokemon.style.color = theme.dark.textColorBase
-//       btnSearch.style.backgroundColor = theme.dark.backgroundLevel2
-//       divDetalhes.forEach(detalhe =>{
-//         detalhe.style.backgroundColor = theme.dark.backgroundLevel2
-//         detalhe.style.color = theme.dark.textColorBase
-//       })
-//       types.forEach(type => {
-//         type.style.color = theme.dark.backgroundBase
-//       });
-//     }else{
-//       searchPokemon.style.backgroundColor = "";
-//       searchPokemon.style.color = "";
-//       btnSearch.style.backgroundColor = "";
-//       divDetalhes.forEach(detalhe =>{
-//         detalhe.style.backgroundColor = "";
-//         detalhe.style.color = "";
-//       })
-//       types.forEach(type => {
-//         type.style.color = "";
-//       });
-//     }
-  
-
-  
-//     const bodySelecionado = document.querySelector("body.selecionado")
-//     body.classList.add("selecionado")
-//     if (bodySelecionado) {
-//       body.classList.remove("selecionado")
-//     }
-  
-//   })
-// }
-

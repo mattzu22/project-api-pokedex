@@ -4,14 +4,15 @@ import { changerPokemonShiny } from "../pokemon.js";
 import { darkMode } from "../pokemon.js";
 
 export const screenPokemon = {
-  pokemonData: document.querySelector(".container-pokemons"),
+  pokemonData: document.querySelector(".card-pokemon"),
 
   renderPokemon(detail) {
-    let pokemon = detail.map((detail) => 
-      `
-    <div class="detail-pokemon">
-      <div class="info-right ${detail.types.join("-")} cartao-pokemon">
-        <div class="info-pokemon">
+    let pokemon = detail.map(
+      (detail) =>
+        `
+      <div class="container-card-pokemon ${detail.types.join("-")} cartao-pokemon">
+        <div class="info-pokemon-top">
+          
           <div class="name-type">
             <h2 class="name">${detail.name}</h2>
             <div class="types">${detail.types
@@ -19,13 +20,13 @@ export const screenPokemon = {
                 return `<span class="type tipo ${type}">${type}</span>`;
               })
               .join("")}</div>
-            </div>  
+          </div>  
           <p class="number">#00${detail.id}</p>
   
           <button class="btn-shiny"></button>
-      </div>
+        </div>
   
-      <div class="container-poke-details">
+        <div class="info-bottom">
           <img src=${detail.image} class="img-pokemon"/>
               
           <div class="poke-details">
@@ -75,25 +76,24 @@ export const screenPokemon = {
                         <li><span>${result.nameAbility}</span>: ${result.effects[0].effect}</li>
                       `;
                       })
-                      .join("")}.
+                      .join("")}
                   </ul>
               </div>
             </div> 
           </div>  
         </div>
       </div>
-    </div> 
-            `   
+   
+            `
     );
 
     this.pokemonData.innerHTML = pokemon;
-    
-    const btn = document.querySelector(".btn-shiny")
 
-    btn.addEventListener('click', ()=>{
-      changerPokemonShiny(btn)
-    })
+    const btn = document.querySelector(".btn-shiny");
 
+    btn.addEventListener("click", () => {
+      changerPokemonShiny(btn);
+    });
 
     darkMode();
     showColorPokemon();
