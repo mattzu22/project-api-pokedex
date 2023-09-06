@@ -1,6 +1,7 @@
 import { detailsPokemon } from "../services.js";
 
 export default async function fillPokemonsDetails(pokemonData) {
+  console.log(pokemonData);
     const url = pokemonData.url;
     const response = await fetch(url);
     const pokemon = await response.json();

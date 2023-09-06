@@ -33,13 +33,6 @@ async function pokeDetails() {
 }
 
 const theme = {
-  light: {
-    backgroundBase: "#f9f9f9",
-    backgroundLevel1: "#DCDCDC",
-    backgroundLevel2: "#f0f0f0",
-    borderBase: "#e5e5e5",
-    textColorBase: "#222222",
-  },
   dark: {
     backgroundBase: "#181818",
     backgroundLevel1: "#202020",
@@ -58,12 +51,10 @@ export function darkMode() {
   const types = document.querySelectorAll(".tipo");
   const bgPokebola = document.querySelectorAll(".cartao-imagem");
 
-  // Função para definir o modo dark mode
   const setDarkMode = (darkMode) => {
     localStorage.setItem("darkMode", darkMode);
   };
 
-  // Função para aplicar o modo dark mode
   const applyDarkMode = () => {
     const darkMode = localStorage.getItem("darkMode") === "true";
     
@@ -89,7 +80,6 @@ export function darkMode() {
     checkbox.checked = darkMode;
   };
 
-  // Chama a função para aplicar o modo dark mode quando a página é carregada
   applyDarkMode();
 
   checkbox.addEventListener("change", () => {
